@@ -1,0 +1,176 @@
+@use "./media.scss" as *;
+@use "./fontSize.scss" as *;
+@use "./color" as *;
+@use "./function" as *;
+
+
+
+main {
+  min-height: calc(100vh - 20vw);
+  h3 {
+    @include h3;
+  }
+  
+  p {
+    @include p;
+  }
+
+  /*修*/
+  #news {
+    @extend %flex-center;
+    flex-direction: column;
+
+    .title {
+      font-weight: 600;
+      color: $color-deep;
+      margin-bottom: 10px;
+      padding-top: 10vw;
+    }
+
+    .list-box {
+      display: flex;
+      flex-direction: column;
+
+      .list-item {
+        @extend %flex-center;
+        height: auto;
+        margin: 2vw 0;
+
+        @include mobile {
+          flex-direction: column;
+          margin: 1vw 0;
+        }
+
+        figure {
+          height: 15vw;
+          width: 15vw;
+          min-height: 150px;
+          min-width: 150px;
+
+          @include mobile {
+            min-height: 200px;
+            min-width: 60%;
+          }
+
+          img {
+            object-fit: cover;
+            height: 100%;
+          }
+        }
+      }
+
+      .paragraph {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 37vw;
+        height: 15vw;
+        margin-left: 5vw;
+
+        @include mobile {
+          margin-left: 0;
+          width: 60%;
+          padding: 2vh 0;
+          height: auto;
+        }
+
+        .p1 {
+          display: flex;
+          justify-content: space-between;
+          padding: 1vh 0;
+          line-height: 1.6rem;
+
+          @include mobile {
+            flex-wrap: wrap;
+            padding: 0;
+          }
+
+          .date {
+            @include h4;
+            color: $color-pink;
+          }
+        }
+
+        .p2 {
+          padding: 1vh 0;
+          height: auto;
+
+          @include mobile {
+            padding: 2vh 0;
+          }
+
+          p {
+            color: $color-deep;
+            text-align: justify;
+            line-height: 1.6rem;
+
+            @extend %multiple-lines;
+            -webkit-line-clamp: 4;
+
+            @include pad {
+              line-height: 1.4rem;
+              -webkit-line-clamp: 3;
+              // 參考版
+            }
+            @include mobile {
+              // line-height: 1rem;
+              -webkit-line-clamp: 3;
+            }
+          }
+        }
+
+        .p3 {
+          display: flex;
+          justify-content: flex-end;
+
+          @include mobile {
+            padding: 0.5vh 0;
+          }
+
+          a {
+            @include p;
+            @extend %flex-center;
+            color: $color-white;
+            padding: 0.5vw 1vw;
+            /*修*/
+            height: auto;
+            min-height: 1.5rem;
+            width: auto;
+            border-radius: $radius-infinity;
+            background-color: $color-pink;
+
+            @include mobile {
+              padding: 0.8vh 1.5vh;
+              background-color: $color-white;
+              color: $color-pink;
+              border: 1px solid;
+              font-size: .8rem;
+            }
+
+            &:hover {
+              box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            }
+
+          }
+
+        }
+
+
+      }
+
+      .pagenumber {
+        @extend %flex-center;
+        margin: 4vh 0;
+
+        a {
+          padding: 1rem;
+          color: $color-deep;
+
+          &:hover {
+            color: $color-pink;
+          }
+        }
+      }
+    }
+  }
+}

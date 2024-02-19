@@ -1,0 +1,430 @@
+@use "./media.scss" as *;
+@use "./fontSize.scss" as *;
+@use "./color" as *;
+@use "./function" as *;
+
+
+main {
+  h3 {
+    @include h3;
+  }
+
+  p {
+    @include p;
+  }
+
+  #shopping {
+    min-height: 400px;
+    @extend %flex-center;
+    flex-direction: column;
+
+    .big-box {
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+    }
+
+    .top-steps {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 100%;
+      margin-right: 8%;
+      padding-top: 6.5vw;
+
+      @include mobile {
+        justify-content: center;
+        margin: 0;
+        padding: 10vh 0 2vh 0;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2vw;
+
+        p {
+          @include p;
+
+          @include mobile {
+            font-size: 0.75rem;
+          }
+        }
+
+        h3 {
+          width: 3rem;
+          height: 3rem;
+          align-items: center;
+          background-color: #d9d9d9;
+          border-radius: 50px;
+          @include h3;
+
+          @include mobile {
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.75rem;
+          }
+        }
+
+        #s1 {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          background-color: $color-pink;
+          color: white;
+
+          &::after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            left: 3rem;
+            /* 直線空行 */
+            width: 8.5rem;
+            height: 1.5px;
+            background-color: $color-gray;
+
+            @include pad {
+              width: 6rem;
+            }
+
+            @include mobile {
+              left: 2rem;
+              /* 直線空行 */
+              width: 5rem;
+            }
+          }
+        }
+
+        #s2 {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          background-color: $color-gray;
+
+          // 直線
+          &::after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+
+            left: 3rem;
+            /* 直線空行 */
+            width: 8.5rem;
+            height: 1.5px;
+            background-color: $color-gray;
+
+            @include pad {
+              width: 6rem;
+            }
+
+            @include mobile {
+              left: 2rem;
+              /* 直線空行 */
+              width: 5rem;
+            }
+          }
+        }
+
+        #s3 {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          background-color: #d9d9d9;
+        }
+
+        p {
+          padding-top: 1vw;
+        }
+      }
+    }
+
+    .list-box {
+
+      @include mobile {
+        width: 70%;
+      }
+
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 600;
+        color: $color-deep;
+        padding: 2vw 0 2vw 0.5vw;
+
+        @include mobile {
+          justify-content: center;
+          padding: 2vh 0;
+        }
+      }
+
+      .list {
+        @extend %flex-center;
+        flex-direction: row;
+        border-top: 1px solid $color-pink;
+        border-bottom: 1px solid $color-pink;
+        padding: 0.8vw 4vw 0.8vw 10vw;
+
+        @include mobile {
+          padding: 1vh;
+        }
+
+        p:nth-child(n + 2) {
+          @include mobile {
+            display: none;
+          }
+        }
+
+        p {
+          @include mobile {
+            font-size: 0.75rem;
+          }
+        }
+
+        .products {
+          text-align: center;
+          width: 34%;
+
+          @include mobile {
+            width: 2rem;
+          }
+        }
+
+        .ml {
+          text-align: center;
+          width: 18%;
+        }
+
+        .price {
+          text-align: center;
+          width: 18%;
+
+          @include mobile {
+            width: 12%;
+          }
+        }
+
+        .qty {
+          text-align: center;
+          width: 14%;
+        }
+
+        .total {
+          text-align: center;
+          width: 16%;
+        }
+      }
+
+      .list-item {
+        @extend %flex-center;
+        flex-direction: column;
+
+        .list-item-div {
+          @extend %flex-center;
+          flex-direction: row;
+          height: auto;
+          width: auto;
+          padding: 1vw 0;
+          border-bottom: 1.5px groove $color-gray;
+
+          @include mobile {
+            line-height: 2.5rem;
+            flex-direction: column;
+            padding: 2vh;
+          }
+
+          .list-item-product {
+            width: 10vw;
+            height: 8vw;
+            @extend %flex-center;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0) 0%, #EEEEEE 90%);
+
+            @include mobile {
+              width: auto;
+              height: auto;
+            }
+
+            .product {
+              height: 8vw;
+              width: auto;
+
+              @include mobile {
+                height: 20vh;
+                padding: 0;
+                margin: 2vh 0;
+              }
+            }
+          }
+
+          .item {
+            @extend %flex-center;
+            flex-direction: row;
+
+            @include mobile {
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .products {
+              text-align: center;
+              width: 34%;
+    
+              @include mobile {
+                width: 2rem;
+              }
+            }
+    
+            .ml {
+              text-align: center;
+              width: 18%;
+            }
+    
+            .price {
+              text-align: center;
+              width: 18%;
+    
+              @include mobile {
+                width: 12%;
+              }
+            }
+    
+            .qty {
+              text-align: center;
+              width: 14%;
+              display: flex;
+            }
+    
+            .total {
+              text-align: center;
+              width: 16%;
+            }
+
+            #shopping-cart {
+              // display: flex;
+              // align-items: center;
+
+              @include mobile {
+                padding: 1vh 0;
+              }
+
+              #quantity {
+                width: 30px;
+                text-align: center;
+                margin: 0 5px;
+                border: $color-gray;
+                font-family: "Noto Serif TC";
+              }
+
+              button {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                border-radius: 100%;
+                border: $color-gray;
+              }
+            }
+
+            p {
+              padding: 0 3.5vw;
+
+              @include mobile {
+                font-size: 1rem;
+                padding: 1vh 0;
+              }
+
+              &:nth-child(2) {
+                @include mobile {
+                  display: none;
+                }
+              }
+            }
+
+            .garbage-can {
+              width: 3vw;
+              min-width: 28px;
+
+              @include mobile {
+                width: 4vh;
+                height: auto;
+              }
+            }
+
+            @include mobile {
+              flex-wrap: wrap;
+              align-items: center;
+            }
+          }
+        }
+      }
+
+      .total {
+        .t1 {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          margin-right: 3vw;
+          padding: 1vw 0;
+
+          @include mobile {
+            padding: 2vh 0;
+          }
+        }
+
+        .next {
+          display: flex;
+          justify-content: flex-end;
+          margin-right: 3vw;
+          padding: 8vw 0 12vw 0;
+
+          a {
+            display: flex;
+            color: $color-white;
+            padding: 1vh 1vh;
+            height: auto;
+            width: 120px;
+            cursor: pointer;
+            border-radius: $radius-infinity;
+            border: none;
+            background-color: $color-pink;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+              .right-arrow {
+                transform: translateX(4px);
+              }
+            }
+          }
+
+          #submit {
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: $color-white;
+            font-family: "Noto Serif TC";
+          }
+
+          .right-arrow {
+            display: flex;
+            width: 20px;
+            height: 20px;
+            color: $color-white;
+            transition: all .35s;
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+
+  }
+}
